@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Wealth Copilot Prototype - Digital Wealth Management</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Google Fonts for premium banking typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Background decorative elements for premium glassmorphism effect -->
+  <div class="glow-bg glow-1"></div>
+  <div class="glow-bg glow-2"></div>
+
+  <!-- Header Plane -->
+  <header class="app-header">
+    <div class="header-logo">
+      <div class="brand-logo-icon" style="width: 24px; height: 24px; background: linear-gradient(135deg, var(--orange), var(--teal)); border-radius: 50%;"></div>
+      <div class="logo-text" style="margin-left: 8px;">
+        <span class="brand-main" style="color: var(--orange); font-weight: 800;">AI</span> <span class="brand-sub">Wealth Copilot Prototype</span>
+      </div>
+    </div>
+    <div class="header-tag">
+      <span class="badge badge-teal">Banking Innovation Hackathon Prototype</span>
+      <span class="badge badge-orange">Digital Wealth Management</span>
+    </div>
+  </header>
+
+  <!-- Main Container Split-Screen -->
+  <main class="split-container">
+
+    <!-- LEFT PANEL: Customer Mobile App Simulation -->
+    <section class="panel-left">
+      <div class="section-title-bar">
+        <h3>📱 Customer Mobile App Simulation</h3>
+        <p>Responsive mobile-first wizard interface representing the customer advisory flow.</p>
+      </div>
+
+      <!-- Mobile Frame Emulator -->
+      <div class="mobile-frame">
+        <div class="mobile-notch"></div>
+        <div class="mobile-status-bar">
+          <span class="status-time" id="currentTime">10:00 AM</span>
+          <span class="status-network">5G •••</span>
+        </div>
+
+        <div class="mobile-screen-content" id="mobileScreen">
+          <div class="disclaimer-banner" style="background: rgba(255, 107, 0, 0.08); border-left: 3px solid var(--orange); padding: 8px 12px; margin: 12px; font-size: 10px; color: #f8d7da; border-radius: 4px; line-height: 1.4;">
+            <strong>Disclaimer:</strong> This is an independent prototype created for demonstration purposes. It is not affiliated with or endorsed by any bank.
+          </div>
+
+          <!-- WIZARD STEP 1: Persona Picker & Quick Start -->
+          <div class="wizard-step active" id="step1">
+            <div class="screen-header">
+              <h2>Select Demo Profile</h2>
+              <p>Choose a pre-configured customer profile to run the simulation, or build one manually.</p>
+            </div>
+            
+            <div class="persona-list">
+              <div class="persona-card" onclick="app.selectPersona('CUST_001')">
+                <div class="persona-meta">
+                  <span class="persona-name">Aarav Sharma</span>
+                  <span class="persona-age">Age 28 • Software Engineer</span>
+                </div>
+                <div class="badge badge-orange">High Risk</div>
+                <p class="persona-desc">Young professional with high risk tolerance and regular saving habits.</p>
+              </div>
+
+              <div class="persona-card" onclick="app.selectPersona('CUST_002')">
+                <div class="persona-meta">
+                  <span class="persona-name">Priya Patel</span>
+                  <span class="persona-age">Age 42 • Business Owner</span>
+                </div>
+                <div class="badge badge-teal">Medium Risk</div>
+                <p class="persona-desc">Mid-career business owner with substantial investable cash but past bounced cheque.</p>
+              </div>
+
+              <div class="persona-card" onclick="app.selectPersona('CUST_003')">
+                <div class="persona-meta">
+                  <span class="persona-name">Ramesh Kulkarni</span>
+                  <span class="persona-age">Age 62 • Retired Officer</span>
+                </div>
+                <div class="badge badge-grey">Low Risk</div>
+                <p class="persona-desc">Senior citizen looking for capital protection and recurring payouts.</p>
+              </div>
+            </div>
+
+            <div class="or-separator"><span>OR</span></div>
+
+            <button class="btn btn-primary btn-block" onclick="app.setStep(2)">Build Custom Profile ➜</button>
+          </div>
+
+          <!-- WIZARD STEP 2: Preferences & Multilingual Goal Capture -->
+          <div class="wizard-step" id="step2">
+            <div class="screen-header">
+              <h2>Preferences & Onboarding</h2>
+              <p>Set preferred interface language and define short and long-term financial targets.</p>
+            </div>
+
+            <div class="form-group">
+              <label for="langSelect">Preferred Language / भाषा</label>
+              <select id="langSelect" class="form-select" onchange="app.changeLanguage()">
+                <option value="en">English (US/UK)</option>
+                <option value="hi">हिंदी (Hindi)</option>
+                <option value="mr">मराठी (Marathi)</option>
+                <option value="gu">ગુજરાતી (Gujarati)</option>
+              </select>
+            </div>
+
+            <!-- Conversational NLU Section -->
+            <div class="form-group NLU-input-container" style="background: rgba(245, 130, 32, 0.05); padding: 12px; border-radius: 8px; border: 1px dashed var(--accent-orange); margin-bottom: 15px;">
+              <label style="color: var(--accent-orange); font-weight: 600; font-size: 11px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+                <span>💬 Tell the Copilot in Your Own Words</span>
+                <span class="badge badge-orange" style="font-size: 8px; padding: 2px 4px; border-radius: 4px;">AI Parser Active</span>
+              </label>
+              <textarea id="conversationalGoalInput" class="form-input" rows="3" placeholder="e.g. I want to build a retirement portfolio of 25 lakhs in 15 years, comfortable with medium risk..." style="font-size: 11px; margin-top: 4px; resize: none; background: rgba(0,0,0,0.25); color: #fff; width: 100%; box-sizing: border-box; border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; padding: 6px;"></textarea>
+              
+              <!-- Quick Chips -->
+              <div class="prompt-chips" style="display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px;">
+                <span class="prompt-chip" style="font-size: 9px; background: rgba(255,255,255,0.06); padding: 3px 6px; border-radius: 12px; cursor: pointer; color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.1);" onclick="app.usePromptChip(1)">Aarav style ➜</span>
+                <span class="prompt-chip" style="font-size: 9px; background: rgba(255,255,255,0.06); padding: 3px 6px; border-radius: 12px; cursor: pointer; color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.1);" onclick="app.usePromptChip(2)">Priya style ➜</span>
+                <span class="prompt-chip" style="font-size: 9px; background: rgba(255,255,255,0.06); padding: 3px 6px; border-radius: 12px; cursor: pointer; color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.1);" onclick="app.usePromptChip(3)">Ramesh style ➜</span>
+              </div>
+              <button class="btn btn-primary btn-block btn-xs" id="btnNluParse" onclick="app.parseIntentWithAI()" style="margin-top: 8px; height: 26px; font-size: 10px; padding: 0;">Analyze & Populate Profile ⚡</button>
+            </div>
+
+            <div class="form-group">
+              <label for="custName" id="lblCustName">Full Name</label>
+              <input type="text" id="custName" class="form-input" placeholder="Enter full name">
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-6">
+                <label for="custAge" id="lblCustAge">Age</label>
+                <input type="number" id="custAge" class="form-input" placeholder="Age" min="18" max="100">
+              </div>
+              <div class="form-group col-6">
+                <label for="custRisk" id="lblCustRisk">Risk Tolerance</label>
+                <select id="custRisk" class="form-select">
+                  <option value="Low">Low (Safe)</option>
+                  <option value="Medium">Medium</option>
+                  <option value="High">High (Aggressive)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-6">
+                <label for="custIncome" id="lblCustIncome">Monthly Income (₹)</label>
+                <input type="number" id="custIncome" class="form-input" placeholder="Income">
+              </div>
+              <div class="form-group col-6">
+                <label for="custExpenses" id="lblCustExpenses">Monthly Expenses (₹)</label>
+                <input type="number" id="custExpenses" class="form-input" placeholder="Expenses">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="goalType" id="lblGoalType">Primary Investment Goal</label>
+              <select id="goalType" class="form-select" onchange="app.checkGoalComplexity()">
+                <option value="TAX_SAVING">Short Term: Tax Saving (under Sec 80C)</option>
+                <option value="EMERGENCY_FUND">Short Term: Emergency Liquidity Fund</option>
+                <option value="RETIREMENT">Long Term: Retirement Planning</option>
+                <option value="CHILD_EDUCATION">Long Term: Child Education Portfolio</option>
+                <option value="ESTATE_PLANNING">Long Term: Estate Planning & Trust Setup</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="investmentAmount" id="lblInvestmentAmount">Investment Budget / Ticket Size (₹)</label>
+              <input type="number" id="investmentAmount" class="form-input" placeholder="Amount to invest" value="100000">
+            </div>
+
+            <div class="button-row">
+              <button class="btn btn-secondary" onclick="app.setStep(1)">Back</button>
+              <button class="btn btn-primary" onclick="app.submitProfile()">Next ➜</button>
+            </div>
+          </div>
+
+          <!-- WIZARD STEP 3: Banking Summary & Ingestion Audit -->
+          <div class="wizard-step" id="step3">
+            <div class="screen-header">
+              <h2>Financial Profile Summary</h2>
+              <p>We've combined your self-declared entries with synthetic transaction logs from simulated checking and savings accounts.</p>
+            </div>
+
+            <div class="profile-summary-box">
+              <div class="summary-line">
+                <span class="summary-lbl">Declared Surplus:</span>
+                <span class="summary-val text-teal" id="valDeclaredSurplus">₹0 / month</span>
+              </div>
+              <div class="summary-line">
+                <span class="summary-lbl">Simulated Savings Balance:</span>
+                <span class="summary-val" id="valSavingsBalance">₹0</span>
+              </div>
+              <div class="summary-line">
+                <span class="summary-lbl">Investment Habit:</span>
+                <span class="summary-val" id="valInvestmentHabit">N/A</span>
+              </div>
+              <div class="summary-line">
+                <span class="summary-lbl">Cheque Bounces (12m):</span>
+                <span class="summary-val" id="valChequeBounces">0</span>
+              </div>
+            </div>
+
+            <div class="compliance-status-box">
+              <div class="compliance-icon-check">✓</div>
+              <div>
+                <strong>Data Ingestion Complete</strong>
+                <p class="text-xs">No active fraud flags detected. Transaction profiles match the declared wealth profile.</p>
+              </div>
+            </div>
+
+            <div class="button-row">
+              <button class="btn btn-secondary" onclick="app.setStep(2)">Back</button>
+              <button class="btn btn-primary" onclick="app.runSuitabilityEngine()">Evaluate Suitability ➜</button>
+            </div>
+          </div>
+
+          <!-- WIZARD STEP 4: Suitability & Recommendation Screen -->
+          <div class="wizard-step" id="step4">
+            <div class="screen-header">
+              <h2>Indicative Wealth Plan</h2>
+              <p>Our suitability assessment result matched your parameters to the following mock product allocations.</p>
+            </div>
+
+            <!-- Risk Band Visualizer -->
+            <div class="risk-bar-container">
+              <div class="risk-bar-meta">
+                <span class="risk-lbl">Suitability Appetite Group:</span>
+                <span class="risk-val text-orange" id="riskBandName">Moderate</span>
+              </div>
+              <div class="risk-bar-track">
+                <div class="risk-bar-fill" id="riskBandFill"></div>
+              </div>
+              <div class="risk-score-caption" id="riskScoreVal">Suitability Score: 45 / 100</div>
+            </div>
+
+            <!-- Scheme Recommendation List -->
+            <h4 class="section-subtitle">Recommended Schemes (Indicative)</h4>
+            <div class="scheme-list" id="recommendedSchemesContainer">
+              <!-- Dynamically Populated -->
+            </div>
+
+            <!-- Escalation Notice if Triggered -->
+            <div class="escalation-alert-card hide" id="suitabilityEscalationNotice">
+              <div class="alert-header">
+                <span class="alert-icon">⚠️</span>
+                <strong>Requires Relationship Manager Review</strong>
+              </div>
+              <p class="text-xs" id="suitabilityEscalationReason">Escalation reason will go here...</p>
+            </div>
+
+            <div class="button-row">
+              <button class="btn btn-secondary" onclick="app.setStep(3)">Back</button>
+              <button class="btn btn-primary" id="btnContinueOrEscalate" onclick="app.handleContinueAction()">Proceed with Plan ➜</button>
+            </div>
+          </div>
+
+          <!-- WIZARD STEP 5: Regulatory Guardrail Handoff Screen -->
+          <div class="wizard-step" id="step5">
+            <div class="screen-header text-center">
+              <div class="lock-shield-icon">🛡️</div>
+              <h2>Advisory Review Redirect</h2>
+              <p>SEBI-aligned guidelines require manual relationship advisor review and physical documentation prior to account fulfillment.</p>
+            </div>
+
+            <div class="escalation-summary-box">
+              <div class="escalation-metric">
+                <span class="label">Compliance Reason:</span>
+                <strong class="value text-orange" id="handoffReasonTitle">Requires Relationship Manager Review</strong>
+              </div>
+              <p class="desc" id="handoffReasonDesc">Alternative Investment Funds are complex, high-risk assets requiring physical risk declaration and manual verification under SEBI Category II guidelines.</p>
+            </div>
+
+            <div class="rm-card">
+              <div class="rm-avatar">👤</div>
+              <div class="rm-info">
+                <strong>Subhash Chandra</strong>
+                <p>Senior Wealth Advisor, Client Priority Wealth Services</p>
+                <div class="rm-status"><span class="pulse-dot"></span> Online (Accepting Handoffs)</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="escalationNotes">Include comments for the relationship advisor:</label>
+              <textarea id="escalationNotes" class="form-input" rows="3" placeholder="Provide details on your financial requirements..."></textarea>
+            </div>
+
+            <button class="btn btn-primary btn-block" onclick="app.triggerHandoffConfirmation()">Initiate Secured RM Connect</button>
+            <button class="btn btn-link btn-block" onclick="app.resetDemo()">Cancel & Reset</button>
+          </div>
+
+          <!-- WIZARD STEP 6: Completion / Success Summary -->
+          <div class="wizard-step" id="step6">
+            <div class="screen-header text-center">
+              <div class="success-seal-icon">✓</div>
+              <h2 id="successHeaderTitle">Request Registered</h2>
+              <p id="successHeaderSub">Your wealth onboarding profiling has been logged with the internal compliance ledger.</p>
+            </div>
+
+            <div class="ticket-box">
+              <div class="ticket-row">
+                <span>Onboarding Review Reference:</span>
+                <strong id="ticketRef">AI-W-987251</strong>
+              </div>
+              <div class="ticket-row">
+                <span>Verification Path:</span>
+                <strong id="ticketPath">Self-Onboarding (Direct)</strong>
+              </div>
+              <div class="ticket-row">
+                <span>Assigned Advisor:</span>
+                <strong id="ticketAdvisor">System Automated Portfolio</strong>
+              </div>
+              <div class="ticket-row">
+                <span>Onboarding Language:</span>
+                <strong id="ticketLang">English</strong>
+              </div>
+            </div>
+
+            <div class="note-box">
+              <strong>🔒 Auditable Compliance Log Stored</strong>
+              <p class="text-xs">Indicative recommendation only. All portfolio selections are subject to compliance reviews. Mutual fund investments are subject to market risks. All data and calculations are synthetic/mock. No SEBI/RBI/IRDA approvals are claimed or implied for this prototype.</p>
+            </div>
+
+            <button class="btn btn-primary btn-block" onclick="app.resetDemo()">Run Another Simulation</button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- RIGHT PANEL: Regulatory Auditor Control & Explainability Console -->
+    <section class="panel-right">
+      <div class="section-title-bar">
+        <h3>🔍 Internal Auditor & Advisor Control Console</h3>
+        <p>Provides deep visibility into rules execution, risk calculations, audit trail logging, and optional GenAI layers.</p>
+      </div>
+
+      <!-- Control Bar -->
+      <div class="console-box flex-column gap-sm" style="background: rgba(255,255,255,0.02); padding: 12px; border-radius: 8px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column; gap: 8px;">
+        <div class="flex-row align-center justify-between" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+          <label class="toggle-container" style="display: flex; align-items: center; gap: 8px;">
+            <input type="checkbox" id="chkGenAIMode" onchange="app.toggleGenAIExplanation()">
+            <span class="toggle-slider"></span>
+            <strong>Enable Live GenAI Model Calls</strong>
+          </label>
+          <button class="btn btn-secondary btn-xs" onclick="app.resetDemo()">Reset Engine</button>
+        </div>
+        
+        <div class="flex-row align-center gap-sm" style="display: flex; align-items: center; gap: 8px; width: 100%; margin-top: 6px;">
+          <span style="font-size: 11px; color: rgba(255,255,255,0.6); min-width: 110px;">Model Provider:</span>
+          <select id="selModelProvider" class="form-input" style="font-size: 11px; padding: 2px 4px; height: 26px; margin: 0; background: var(--bg-dark); flex-grow: 1; border: 1px solid rgba(255,255,255,0.15); color: #fff;" onchange="app.changeModelProvider()">
+            <option value="gemini">Gemini API (Direct Client-Side)</option>
+            <option value="bedrock">Amazon Bedrock (VPC API Gateway / Lambda Proxy)</option>
+          </select>
+        </div>
+
+        <div id="divGeminiKeyRow" class="flex-row align-center gap-sm" style="display: flex; align-items: center; gap: 8px; width: 100%; margin-top: 4px;">
+          <span style="font-size: 11px; color: rgba(255,255,255,0.6); min-width: 110px;">Gemini API Key:</span>
+          <input type="password" id="geminiApiKey" class="form-input" placeholder="Paste your Gemini key here (Optional)" style="font-size: 11px; padding: 4px 8px; height: 26px; margin: 0; background: var(--bg-dark); flex-grow: 1;" onchange="app.saveApiKey()">
+        </div>
+
+        <div id="divBedrockProxyRow" class="flex-row align-center gap-sm" style="display: none; align-items: center; gap: 8px; width: 100%; margin-top: 4px;">
+          <span style="font-size: 11px; color: rgba(255,255,255,0.6); min-width: 110px;">AWS Proxy URL:</span>
+          <input type="text" id="awsProxyUrl" class="form-input" placeholder="e.g. https://api.sandbox.aws/bedrock-proxy (Optional)" style="font-size: 11px; padding: 4px 8px; height: 26px; margin: 0; background: var(--bg-dark); flex-grow: 1;" onchange="app.saveAWSProxy()">
+        </div>
+
+        <p id="pSecurityNote" style="font-size: 9px; color: rgba(255,255,255,0.4); margin: 0; padding-left: 118px;">⚠️ <em>Demo Security Note: API keys are stored temporarily in session-only storage (sessionStorage) on your local browser and are never sent to external servers other than directly to the model endpoint.</em></p>
+      </div>
+
+      <!-- Split Layout for Audit Metadata -->
+      <div class="console-grid">
+
+        <!-- Card 1: Risk Engine Calculation Breakdown -->
+        <div class="console-card">
+          <div class="console-card-header">
+            <h4>📊 Risk Engine Metrics</h4>
+          </div>
+          <div class="console-card-body">
+            <div class="metric-list-detailed" id="auditRiskMetrics">
+              <div class="placeholder-text">Run a profiling task to see mathematical risk weights.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Regulatory Guardrails & Decision Log -->
+        <div class="console-card">
+          <div class="console-card-header">
+            <h4>🛡️ Regulatory Guardrails & Decision Log</h4>
+          </div>
+          <div class="console-card-body">
+            <div class="audit-event-list" id="auditEventsLog">
+              <div class="audit-item info">
+                <span class="timestamp">[System Initialize]</span> Ingested rules catalog containing 4 handoff constraints.
+              </div>
+              <div class="audit-item info">
+                <span class="timestamp">[System Initialize]</span> Ingested 6 wealth products across low, medium, and high risk bands.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Explainability Object Rationale (Bank-Safe Wording) -->
+        <div class="console-card col-span-2">
+          <div class="console-card-header">
+            <h4>💡 Advisor Explainability Object & Rationale</h4>
+            <span class="badge badge-grey" id="explainModeBadge">Mode: Deterministic Rules</span>
+          </div>
+          <div class="console-card-body">
+            <div class="explainability-container">
+              <div class="explain-block">
+                <h5>1. Customer-Safe Rationale (Wording rendered in customer UI)</h5>
+                <blockquote id="custSafeRationale">
+                  Please complete the suitability profile to generate customer explanations.
+                </blockquote>
+              </div>
+              <div class="explain-block">
+                <h5>2. Internal Compliance Rationale (Auditable background justification)</h5>
+                <blockquote id="complianceRationale">
+                  Pending risk band calculations.
+                </blockquote>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: JSON State Inspector -->
+        <div class="console-card col-span-2">
+          <div class="console-card-header">
+            <h4>⚙️ Active Session State Inspector (JSON Payload)</h4>
+          </div>
+          <div class="console-card-body">
+            <pre class="json-viewer" id="jsonViewer">{}</pre>
+          </div>
+        </div>
+
+        <!-- Card 5: Intent Extraction Audit & AI-to-Rules Handoff Log -->
+        <div class="console-card col-span-2">
+          <div class="console-card-header" style="display: flex; align-items: center; justify-content: space-between;">
+            <h4>🤖 Intent Extraction Audit & AI-to-Rules Handoff Log</h4>
+            <span class="badge badge-grey" id="nluStatusBadge">Status: IDLE</span>
+          </div>
+          <div class="console-card-body">
+            <div class="nlu-log-container" style="display: flex; flex-direction: column; gap: 10px;">
+              <div class="nlu-log-block">
+                <h5 style="margin: 0 0 4px 0; font-size: 11px; color: var(--accent-orange);">1. Model Prompts & Target Schema Grounding</h5>
+                <pre class="json-viewer" id="nluPromptViewer" style="height: 100px; overflow-y: auto; font-size: 10px; padding: 8px; background: rgba(0,0,0,0.3); border-radius: 4px; color: rgba(255,255,255,0.8); white-space: pre-wrap; word-break: break-all; font-family: monospace;">Pending free-text goal input...</pre>
+              </div>
+              <div class="nlu-log-block">
+                <h5 style="margin: 0 0 4px 0; font-size: 11px; color: var(--primary-teal);">2. Structured JSON Output & Rule Engine Overrides</h5>
+                <pre class="json-viewer" id="nluResponseViewer" style="height: 120px; overflow-y: auto; font-size: 10px; padding: 8px; background: rgba(0,0,0,0.3); border-radius: 4px; color: #a5ffd6; font-family: monospace;">Pending inference content...</pre>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="app-footer">
+    <p>© 2026 AI Wealth Copilot Prototype. Strictly for Demo & Evaluation Purposes only. Compliant with SEBI & RBI Guidelines.</p>
+  </footer>
+
+  <!-- Script references -->
+  <script src="app.js"></script>
+</body>
+</html>

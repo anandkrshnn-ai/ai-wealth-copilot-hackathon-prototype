@@ -1,0 +1,47 @@
+[
+  {
+    "id": "CUST_001",
+    "name": "Aarav Sharma",
+    "age": 28,
+    "occupation": "Software Engineer",
+    "monthly_income": 120000,
+    "monthly_expenses": 50000,
+    "existing_investments": 150000,
+    "declared_risk_appetite": "High",
+    "transaction_behavior": {
+      "average_balance": 95000,
+      "investment_frequency": "Monthly",
+      "bounced_cheques": 0
+    }
+  },
+  {
+    "id": "CUST_002",
+    "name": "Priya Patel",
+    "age": 42,
+    "occupation": "Business Owner",
+    "monthly_income": 350000,
+    "monthly_expenses": 180000,
+    "existing_investments": 1200000,
+    "declared_risk_appetite": "Medium",
+    "transaction_behavior": {
+      "average_balance": 450000,
+      "investment_frequency": "Quarterly",
+      "bounced_cheques": 1
+    }
+  },
+  {
+    "id": "CUST_003",
+    "name": "Ramesh Kulkarni",
+    "age": 62,
+    "occupation": "Retired Government Officer",
+    "monthly_income": 55000,
+    "monthly_expenses": 35000,
+    "existing_investments": 2500000,
+    "declared_risk_appetite": "Low",
+    "transaction_behavior": {
+      "average_balance": 80000,
+      "investment_frequency": "None",
+      "bounced_cheques": 0
+    }
+  }
+]

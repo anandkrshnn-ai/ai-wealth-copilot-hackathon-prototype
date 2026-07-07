@@ -1,0 +1,20 @@
+{
+  "name": "ai-wealth-copilot-hackathon-prototype",
+  "version": "1.0.0",
+  "description": "AI Wealth Copilot Prototype: Digital Wealth Management Hybrid Advisor MVP",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "test": "node tests/run_tests.js"
+  },
+  "keywords": [
+    "wealth",
+    "advisory",
+    "compliance",
+    "guardrails",
+    "sandbox",
+    "hackathon"
+  ],
+  "author": "AI Wealth Copilot Prototype Team",
+  "license": "MIT"
+}

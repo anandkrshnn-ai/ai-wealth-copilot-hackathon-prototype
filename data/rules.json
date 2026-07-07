@@ -1,0 +1,50 @@
+{
+  "risk_weights": {
+    "age": {
+      "under_30": 30,
+      "30_to_50": 20,
+      "over_50": 5
+    },
+    "income_to_investment_ratio": {
+      "high": 30,
+      "medium": 20,
+      "low": 10
+    },
+    "self_declared_appetite": {
+      "High": 40,
+      "Medium": 25,
+      "Low": 10
+    }
+  },
+  "risk_bands": [
+    { "band": "Conservative", "score_min": 0, "score_max": 35, "description": "Prioritizes capital protection; suitable for short horizons." },
+    { "band": "Moderate", "score_min": 36, "score_max": 70, "description": "Balances growth and capital preservation; suitable for medium horizons." },
+    { "band": "Aggressive", "score_min": 71, "score_max": 100, "description": "Focuses on high growth; willing to tolerate short-term capital volatility." }
+  ],
+  "handoff_triggers": [
+    {
+      "trigger": "REGULATED_PRODUCT",
+      "condition": "Selected scheme is marked with regulated_escalation_required = true",
+      "escalation_group": "Wealth RM Team",
+      "action_required": "Schedule physical sign-off and suitability review"
+    },
+    {
+      "trigger": "LARGE_TICKET_HNW",
+      "condition": "Investable surplus or transaction request > 10,000,000 INR",
+      "escalation_group": "Priority RM Team",
+      "action_required": "Direct routing to Senior RM for custom portfolio structuring"
+    },
+    {
+      "trigger": "SENIOR_CITIZEN_MISMATCH",
+      "condition": "Age > 60 AND Risk Band is Aggressive",
+      "escalation_group": "Retirement Advisory Desk",
+      "action_required": "Mandatory manual validation of risk tolerances to prevent mis-selling"
+    },
+    {
+      "trigger": "COMPLEX_GOAL_ESTATE",
+      "condition": "Selected goal type is Estate Planning or Trust Setup",
+      "escalation_group": "Trust & Estate Experts",
+      "action_required": "Handoff to legal advisory panel"
+    }
+  ]
+}
